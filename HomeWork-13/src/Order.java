@@ -20,8 +20,8 @@ class Order {
 
     @Override
     public String toString() {
-        return "Заказ: [Клиент: " + customer +
-                ", Товар: " + Arrays.toString(basket) + "]";
+        return "Order[customer= " + customer +
+                ", basket=" + Arrays.toString(basket) + "]";
     }
 
     @Override

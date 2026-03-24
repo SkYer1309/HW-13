@@ -31,7 +31,7 @@ class Product {
 
     @Override
     public String toString() {
-        return "Товар: [артикул=" + id + ", название=" + name +", цена="
+        return "Товар[артикул=" + id + ", название=" + name +", цена="
                 + price + ", категория=" + category + "]";
     }
 
