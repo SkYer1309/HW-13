@@ -1,6 +1,101 @@
 import java.util.Arrays;
 import java.util.Objects;
 
+class Product {
+    private int id;
+    private String name;
+    private int price;
+    private String category;
+
+    public Product(int id, String name, int price, String category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public String toString() {
+        return "Товар[артикул=" + id + ", название=" + name + ", цена="
+                + price + ", категория=" + category + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Product product = (Product) obj;
+        return id == product.id &&
+                Objects.equals(category, product.category);
+    }
+}
+
+class Order {
+    private String customer;
+    private Product[] basket;
+
+    public Order(String customer, Product[] basket) {
+        this.customer = customer;
+        this.basket = basket;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public Product[] getBasket() {
+        return basket;
+    }
+
+    @Override
+    public String toString() {
+        return "Order[customer= " + customer +
+                ", basket=" + Arrays.toString(basket) + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Order order = (Order) obj;
+
+        if (!Objects.equals(customer, order.customer)) return false;
+
+        if (basket == null && order.basket == null) return true;
+        if (basket == null || order.basket == null) return false;
+        if (basket.length != order.basket.length) return false;
+
+        for (int i = 0; i < basket.length; i++) {
+            if (basket[i] == null && order.basket[i] == null) continue;
+            if (basket[i] == null || order.basket[i] == null) return false;
+            if (!basket[i].equals(order.basket[i])) return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customer, Arrays.hashCode(basket));
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Тестирование класса Product ===\n");
