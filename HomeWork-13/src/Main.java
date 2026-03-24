@@ -2,10 +2,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 class Product {
-    private int id;
-    private String name;
-    private int price;
-    private String category;
+    private final int id;
+    private final String name;
+    private final int price;
+    private final String category;
 
     public Product(int id, String name, int price, String category) {
         this.id = id;
@@ -47,8 +47,8 @@ class Product {
 }
 
 class Order {
-    private String customer;
-    private Product[] basket;
+    private final String customer;
+    private final Product[] basket;
 
     public Order(String customer, Product[] basket) {
         this.customer = customer;
@@ -127,7 +127,6 @@ public class Main {
         Product[] basket3 = {produkt4, produkt1}; // другой порядок
         Product[] basket4 = {produkt4, produkt5}; // другой товар
         Product[] basket5 = null;
-        Product[] basket6 = {};
 
         Order o1 = new Order("Иван", basket1);
         Order o2 = new Order("Иван", basket2);
